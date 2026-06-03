@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a1a0a">
+<title>NurSalah</title>
+<link rel="manifest" href="manifest.json">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a1a0a;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'DM Sans',sans-serif}
+.splash{text-align:center;animation:fadeIn .5s ease}
+.icon{width:80px;height:80px;background:linear-gradient(135deg,#16a34a,#4ade80);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 16px}
+h1{color:#f0f5f0;font-size:28px;font-family:'Amiri',serif}
+p{color:#3a5a3a;margin-top:8px;font-size:14px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="splash">
+  <div class="icon">🕌</div>
+  <h1>NurSalah</h1>
+  <p>Islamic Companion</p>
+</div>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js',{scope:'/nursalah/'})}
+const ob=localStorage.getItem('ns_onboarded');
+setTimeout(()=>{window.location.href=ob?'home.html':'onboarding.html'},800);
+</script>
+</body>
+</html>

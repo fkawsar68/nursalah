@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a1a0a">
+<title>NurSalah — Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a1a0a;--card:#0f2a0f;--accent:#16a34a;--accent2:#4ade80;--gold:#d4a017;--text:#f0f5f0;--muted:#5a7a5a;--border:#1a3a1a}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.slides{flex:1;display:flex;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.slide{min-width:100vw;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;text-align:center}
+.emoji{font-size:72px;margin-bottom:24px}
+h2{font-family:'Amiri',serif;font-size:30px;margin-bottom:12px;color:var(--accent2)}
+p{color:var(--muted);font-size:16px;line-height:1.6;max-width:300px}
+.arabic-text{font-family:'Amiri',serif;font-size:22px;color:var(--gold);margin-bottom:8px;direction:rtl}
+.dots{display:flex;gap:8px;justify-content:center;padding:24px 0}
+.dot{width:8px;height:8px;border-radius:4px;background:var(--card);transition:all .3s}
+.dot.active{width:24px;background:var(--accent)}
+.nav{padding:24px 32px 48px;display:flex;gap:12px}
+.btn-skip{flex:1;padding:14px;border:1px solid var(--border);border-radius:14px;background:none;color:var(--muted);font-size:15px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-next{flex:2;padding:14px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:16px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.price-card{background:var(--card);border:1px solid rgba(74,222,128,.2);border-radius:20px;padding:24px;width:100%;max-width:320px;margin:12px 0}
+.price-row{display:flex;gap:12px;justify-content:center;margin-bottom:16px}
+.price-opt{flex:1;border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer}
+.price-opt.sel{border-color:var(--accent2);background:rgba(74,222,128,.1)}
+.price-opt .amount{font-family:'Amiri',serif;font-size:22px;font-weight:700;color:var(--accent2)}
+.price-opt .period{font-size:11px;color:var(--muted)}
+.price-opt .save{font-size:11px;color:var(--gold);margin-top:2px}
+.feature-list{list-style:none;text-align:left;margin:0 0 16px;display:flex;flex-direction:column;gap:8px}
+.feature-list li{display:flex;align-items:center;gap:8px;font-size:14px}
+.feature-list li::before{content:'✓';color:var(--accent2);font-weight:700}
+.btn-pro{width:100%;max-width:320px;padding:16px;border:none;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:17px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:8px}
+.btn-free{background:none;border:none;color:var(--muted);font-size:14px;cursor:pointer;padding:8px;font-family:'DM Sans',sans-serif}
+</style>
+</head>
+<body>
+<div class="slides" id="slides">
+  <div class="slide">
+    <div class="emoji">🕌</div>
+    <div class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h2>Your Islamic Companion</h2>
+    <p>Accurate prayer times, full Quran, Qibla direction, duas, and Zakat calculator — all offline.</p>
+  </div>
+  <div class="slide">
+    <div class="emoji">🧭</div>
+    <h2>Precise Prayer Times</h2>
+    <p>Auto-detect your location. Multiple calculation methods. Never miss a prayer again.</p>
+  </div>
+  <div class="slide">
+    <div class="emoji">📖</div>
+    <h2>Full Quran + Duas</h2>
+    <p>All 114 surahs with Arabic and English. Morning/evening adhkar and daily duas collection.</p>
+  </div>
+  <div class="slide">
+    <div class="emoji">⭐</div>
+    <h2>Unlock NurSalah Pro</h2>
+    <div class="price-card">
+      <div class="price-row">
+        <div class="price-opt sel" id="opt-monthly" onclick="selectPlan('monthly')">
+          <div class="amount">$4.99</div>
+          <div class="period">/ month</div>
+        </div>
+        <div class="price-opt" id="opt-yearly" onclick="selectPlan('yearly')">
+          <div class="amount">$29.99</div>
+          <div class="period">/ year</div>
+          <div class="save">Save 50%</div>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>No ads — pure focus</li>
+        <li>Azan notification reminders</li>
+        <li>Offline Quran access</li>
+        <li>Prayer streak tracking</li>
+      </ul>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">7-day free trial · cancel anytime</div>
+    <button class="btn-pro" onclick="goPro()">Start Free Trial</button>
+    <button class="btn-free" onclick="goFree()">Continue with free version</button>
+  </div>
+</div>
+<div class="dots" id="dots">
+  <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+</div>
+<div class="nav" id="nav">
+  <button class="btn-skip" onclick="skip()">Skip</button>
+  <button class="btn-next" onclick="next()">Next →</button>
+</div>
+<script>
+let cur=0;const total=4;
+const slides=document.getElementById('slides');
+const dots=document.querySelectorAll('.dot');
+const nav=document.getElementById('nav');
+let plan='monthly';
+function go(n){cur=n;slides.style.transform=`translateX(-${cur*100}vw)`;dots.forEach((d,i)=>d.classList.toggle('active',i===cur));if(cur===total-1)nav.style.display='none'}
+function next(){go(cur+1<total?cur+1:cur)}
+function skip(){go(total-1)}
+function selectPlan(p){
+  plan=p;
+  document.getElementById('opt-monthly').classList.toggle('sel',p==='monthly');
+  document.getElementById('opt-yearly').classList.toggle('sel',p==='yearly');
+}
+function goPro(){
+  const urls={monthly:'https://orbit-apps.lemonsqueezy.com/buy/NURSALAH_PRO_MONTHLY_PENDING',yearly:'https://orbit-apps.lemonsqueezy.com/buy/NURSALAH_PRO_YEARLY_PENDING'};
+  window.open(urls[plan],'_blank');
+  finish();
+}
+function goFree(){finish()}
+function finish(){localStorage.setItem('ns_onboarded','1');window.location.href='home.html'}
+</script>
+</body>
+</html>
